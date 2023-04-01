@@ -89,29 +89,25 @@ const weaponsArray = [
 
 
 // ITERATION 2
-let cards = []
-//cards.push(suspectsArray[0])
 
-for (let i=0; i<suspectsArray.length; i++){
-    cards.push(suspectsArray[i])
-}
-for (let i=0; i<weaponsArray.length; i++){
-    cards.push(weaponsArray[i])
-}
-for (let i=0; i<roomsArray.length; i++){
-    cards.push(roomsArray[i])
+
+
+function selectRandom(randomArray) {
+   return randomArray [Math.floor (Math.random()* randomArray.length)]
 }
 
 
-
-function selectRandom(cards) {
-    return cards[Math.round(Math.random()*100/10)]
+function pickMystery() {
+    let killerData = 
+    {suspect: selectRandom(suspectsArray), 
+    weapon:selectRandom(weaponsArray), 
+    room:selectRandom(roomsArray)}
+    return killerData
 }
-
-
-function pickMystery() {}
 
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(killerData) {
+    return `${killerData.suspect.firstName} ${killerData.suspect.lastName} killed Mr. Boddy using the ${killerData.weapon.name} in the ${killerData.room.name}!`
+}
